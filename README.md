@@ -7,11 +7,7 @@
 ![css](https://user-images.githubusercontent.com/74669208/144679360-4b098865-fc71-4b6f-93b2-1907bf3635a7.png)
 
 
-
-
-
-## **I'd like to dominate all these technologies and so more**
-
+![Github stats](https://github-readme-stats.vercel.app/api?username=yourusername&theme=highcontrast&show_icons=true&count_private=true)
 
 
 

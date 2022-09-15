@@ -1,15 +1,29 @@
+![LNagad's GitHub stats](https://github-readme-stats.vercel.app/api?username=LNagad&show_icons=true&theme=gruvbox)      
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=LNagad&layout=compact&theme=gruvbox)](https://github.com/anuraghazra/github-readme-stats)
+
+
 ## Technologies I'm currently learning  
 
-![js](https://user-images.githubusercontent.com/74669208/144678833-4b4d34b8-1890-4302-bf3b-7ff105b2f18b.png)![react](https://user-images.githubusercontent.com/74669208/144678906-fb79aaef-d384-4cad-8c80-07564b583840.png)![python](https://user-images.githubusercontent.com/74669208/144678975-6c204e66-84d4-4eda-a349-5e20c7afb276.png)
-![csharp-logo](https://user-images.githubusercontent.com/74669208/162648970-421074b6-3c77-41df-a526-838486fcf0f6.png)   ![asp](https://user-images.githubusercontent.com/74669208/162649655-b0b9090f-9ec6-4ee2-8e29-26ed2149315d.jpg)
+Backend
 
-![html](https://user-images.githubusercontent.com/74669208/144679369-083532fb-8e0a-4a7a-a5a5-98908a0276fd.png)
-![css](https://user-images.githubusercontent.com/74669208/144679360-4b098865-fc71-4b6f-93b2-1907bf3635a7.png)
+- ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+- ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 
+FrontEnd
 
-![Github stats](https://github-readme-stats.vercel.app/api?username=yourusername&theme=highcontrast&show_icons=true&count_private=true)
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+- ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+- ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+- ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
+Databases
 
+- ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
+- ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+-	![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
 
 

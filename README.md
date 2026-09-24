@@ -47,12 +47,12 @@ the mobile and web frontend and connect the product to the platforms around it.
 
 Most of my day-to-day work happens in **private repositories** on my work account,
 [@maycolperez-blip](https://github.com/maycolperez-blip). The code isn't public,
-but the activity is:
+but the activity is — this graph combines both of my accounts:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lnagad/lnagad/output/github-contribution-grid-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lnagad/lnagad/output/github-contribution-grid-snake.svg" />
-  <img alt="Contribution activity on my work account" src="https://raw.githubusercontent.com/lnagad/lnagad/output/github-contribution-grid-snake.svg" />
+  <img alt="Combined contribution activity across both accounts" src="https://raw.githubusercontent.com/lnagad/lnagad/output/github-contribution-grid-snake.svg" />
 </picture>
 
 ---

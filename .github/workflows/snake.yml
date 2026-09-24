@@ -1,8 +1,8 @@
-name: Generate contribution graph
+name: Generate contribution snake (both accounts)
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # every day
+    - cron: "0 6 */3 * *"  # every 3 days, 06:00 UTC
   workflow_dispatch:       # lets you run it manually
 
 jobs:
@@ -11,14 +11,34 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: Platane/snk@v3
-        with:
-          github_user_name: maycolperez-blip
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+      - name: Checkout this repo
+        uses: actions/checkout@v4
 
-      - uses: crazy-max/ghaction-github-pages@v4
+      - name: Checkout Platane/snk (pinned release)
+        uses: actions/checkout@v4
+        with:
+          repository: Platane/snk
+          ref: v3.5.0
+          path: snk
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Generate merged snake
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNK_USERS: maycolperez-blip,lnagad
+          SNK_OUTPUTS: |
+            ${{ github.workspace }}/dist/github-contribution-grid-snake.svg
+            ${{ github.workspace }}/dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+        run: |
+          cd snk
+          bun install --frozen-lockfile
+          cp ../scripts/merged-snake.ts packages/generate-snake-animation/
+          cd packages/generate-snake-animation
+          bun merged-snake.ts
+
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
           build_dir: dist

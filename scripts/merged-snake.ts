@@ -51,7 +51,32 @@ const max = Math.max(0, ...counts);
 const level = (n: number) => (n === 0 ? 0 : Math.ceil((4 * n) / max));
 
 const cells = base.map((d, i) => ({ ...d, count: counts[i], level: level(counts[i]) }));
-console.log(`📊 ${counts.filter((n) => n > 0).length} active days, ${counts.reduce((a, b) => a + b, 0)} contributions total`);
+const total = counts.reduce((a, b) => a + b, 0);
+console.log(`📊 ${counts.filter((n) => n > 0).length} active days, ${total} contributions total`);
+
+// GitHub-style "N contributions in the last year" caption, drawn in a band added
+// above the svg: the snake can wander 2 cells outside the grid, which the original
+// viewBox already fills, so the caption can't go inside it
+const CAPTION_HEIGHT = 24;
+const caption = `${total.toLocaleString("en-US")} contribution${total === 1 ? "" : "s"} in the last year`;
+
+const isDarkColor = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return r * 0.299 + g * 0.587 + b * 0.114 < 128;
+};
+
+const addCaption = (svg: string, textColor: string, dotOffset: number) => {
+  const m = svg.match(/viewBox="(\S+) (\S+) (\S+) (\S+)" width="(\S+)" height="(\S+)"/);
+  if (!m) throw new Error("Unexpected svg header, can't add the caption");
+  const [header, x, y, w, h, width, height] = m;
+  const top = +y - CAPTION_HEIGHT;
+  const text =
+    `<text x="${dotOffset}" y="${top + 17}" fill="${textColor}" font-size="14" ` +
+    `font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif">${caption}</text>`;
+  return svg
+    .replace(header, `viewBox="${x} ${top} ${w} ${+h + CAPTION_HEIGHT}" width="${width}" height="${+height + CAPTION_HEIGHT}"`)
+    .replace("</svg>", `${text}</svg>`);
+};
 
 const grid = cellsToGrid(cells);
 const snake = snake4;
@@ -64,7 +89,13 @@ for (const out of outputs) {
   if (!out) continue;
   if (out.format !== "svg") throw new Error("Only .svg outputs are supported");
   console.log(`🖌 writing ${out.filename}`);
-  const svg = createSvg(grid, cells, chain, out.drawOptions, out.animationOptions);
+  const { drawOptions } = out;
+  const textColor = isDarkColor(drawOptions.colorEmpty) ? "#9198a1" : "#59636e";
+  const svg = addCaption(
+    createSvg(grid, cells, chain, drawOptions, out.animationOptions),
+    textColor,
+    (drawOptions.sizeCell - drawOptions.sizeDot) / 2,
+  );
   fs.mkdirSync(path.dirname(out.filename), { recursive: true });
   fs.writeFileSync(out.filename, svg);
 }

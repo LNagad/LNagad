@@ -43,17 +43,15 @@ for (const calendar of calendars)
   for (const day of calendar)
     totals.set(day.date, (totals.get(day.date) ?? 0) + day.count);
 
-// Recompute the 0-4 color levels from the combined counts (quartiles of active days)
+// Recompute the 0-4 color levels from the combined counts. GitHub splits the max
+// daily count into 4 equal buckets (despite the *_QUARTILE enum names)
 const base = calendars[0];
 const counts = base.map((d) => totals.get(d.date) ?? 0);
-const active = counts.filter((n) => n > 0).sort((a, b) => a - b);
-const quantile = (p: number) => active[Math.floor((active.length - 1) * p)] ?? 0;
-const [q1, q2, q3] = [quantile(0.25), quantile(0.5), quantile(0.75)];
-const level = (n: number) =>
-  n === 0 ? 0 : n <= q1 ? 1 : n <= q2 ? 2 : n <= q3 ? 3 : 4;
+const max = Math.max(0, ...counts);
+const level = (n: number) => (n === 0 ? 0 : Math.ceil((4 * n) / max));
 
 const cells = base.map((d, i) => ({ ...d, count: counts[i], level: level(counts[i]) }));
-console.log(`📊 ${active.length} active days, ${counts.reduce((a, b) => a + b, 0)} contributions total`);
+console.log(`📊 ${counts.filter((n) => n > 0).length} active days, ${counts.reduce((a, b) => a + b, 0)} contributions total`);
 
 const grid = cellsToGrid(cells);
 const snake = snake4;
